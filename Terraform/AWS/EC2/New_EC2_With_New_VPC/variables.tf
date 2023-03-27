@@ -1,0 +1,31 @@
+variable "access_key" {
+        description = "Access key to AWS console"
+}
+variable "secret_key" {
+        description = "Secret key to AWS console"
+}
+
+variable "instance_name" {
+        description = "Name of the instance to be created"
+        default = "terra-ec2-test"
+}
+
+variable "instance_type" {
+        description = "type for aws EC2 instance"
+        default = "t2.micro"
+}
+
+variable "ami_id" {
+        description = "AMI for aws EC2 instance"
+        default = "ami-09d56f8956ab235b3"
+}
+
+variable "number_of_instances" {
+        description = "number of instances to be created"
+        default = 1
+}
+
+variable "public_key_path" {
+        description = "Public key path"
+        default = "~/.ssh/id_rsa.pub"
+}
