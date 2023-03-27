@@ -36,11 +36,6 @@ resource "aws_route_table_association" "rta_subnet_public" {
   route_table_id = "${aws_route_table.rtb_public.id}"
 }
 
-//#Create an New Elastic IP
-//resource "aws_eip" "ec2-eip" {
-//  vpc = true
-//}
-
 #Create New Security Group
 resource "aws_security_group" "ec2_security_group" {
   name_prefix = "ec2_sg"
@@ -71,7 +66,7 @@ resource "aws_key_pair" "ec2_linux_keypair" {
 #Create EC2 instance
 resource "aws_instance" "ec2_instance" {
   ami           = "${var.ami_id}"
-//  count         = "${var.number_of_instances}"
+  count         = "${var.number_of_instances}"
   instance_type = "${var.instance_type}"
   subnet_id     = aws_subnet.ec2_subnet.id
 
@@ -85,9 +80,3 @@ resource "aws_instance" "ec2_instance" {
     Name = "ec2-linux-instance"
   }
 }
-
-//#Associate EIP with EC2 Instance
-//resource "aws_eip_association" "ec2-eip-association" {
-//  instance_id   = aws_instance.ec2_instance.id
-//  allocation_id = aws_eip.ec2-eip.id
-//}
